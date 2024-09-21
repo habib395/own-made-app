@@ -88,7 +88,7 @@
               </svg>
               <p id="para-one" class="text-base">ADD</p>
             </button>
-            <button class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
+            <button id="cash-out-money-btn" class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -105,7 +105,7 @@
               </svg>
               <p class="text-base">Cashout</p>
             </button>
-            <button class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
+            <button id="transfer-money-btn" class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -175,8 +175,8 @@
             </button>
           </div>
           <!-- middle section end -->
-           <!-- form section start -->
-           <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+           <!-- add section start -->
+           <div id="add-section" class=" hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <form class="card-body">
               <div class="form-control">
                 <label class="label">
@@ -191,15 +191,127 @@
                 <input id="input-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
               </div>
               <div class="form-control mt-6">
-                <button id="login-btn" disabled class="btn btn-warning">Cash In</button>
+                <button id="cash-in-btn" disabled class="btn btn-warning">Cash In</button>
               </div>
             </form>
           </div>
-           <!-- form section end -->
+           <!-- add section end -->
+            <!-- out section start -->
+            <div id="out-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form class="card-body">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Enter Amount</span>
+                  </label>
+                  <input id="cash-out-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Password</span>
+                  </label>
+                  <input id="cas-out-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
+                </div>
+                <div class="form-control mt-6">
+                  <button id="cash-out-btn" disabled class="btn btn-warning">Cash Out</button>
+                </div>
+              </form>
+            </div>
+            <!-- out section end -->
+             <!-- transfer section start -->
+             <div id="transfer-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <form class="card-body">
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Enter Account Number</span>
+                  </label>
+                  <input id="transfer-other-amount" type="number" placeholder="Enter 11 Digit Account Number" class="input input-bordered" required />
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Enter Amount</span>
+                  </label>
+                  <input id="transfer-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                </div>
+                <div class="form-control">
+                  <label class="label">
+                    <span class="label-text">Password</span>
+                  </label>
+                  <input id="transfer-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
+                </div>
+                <div class="form-control mt-6">
+                  <button id="transfer-btn" disabled class="btn btn-warning">Tranafer</button>
+                </div>
+              </form>
+            </div>
+             <!-- transfer section end -->
+              <!-- Bonus section start -->
+              <!-- <div id="bonus-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <form class="card-body">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Enter Amount</span>
+                    </label>
+                    <input id="bonus-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Password</span>
+                    </label>
+                    <input id="bonus-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control mt-6">
+                    <button id="bonus-btn" disabled class="btn btn-warning">Cash Out</button>
+                  </div>
+                </form>
+              </div> -->
+              <!-- Bonus section end -->
+               <!-- pay section start -->
+               <!-- <div id="pay-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <form class="card-body">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Enter Amount</span>
+                    </label>
+                    <input id="pay-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Password</span>
+                    </label>
+                    <input id="pay-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control mt-6">
+                    <button id="pay-btn" disabled class="btn btn-warning">Cash Out</button>
+                  </div>
+                </form>
+              </div> -->
+               <!-- pay section end -->
+                <!-- Transaction section start -->
+                <!-- <div id="transaction-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                  <form class="card-body">
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">Enter Amount</span>
+                      </label>
+                      <input id="transaction-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                    </div>
+                    <div class="form-control">
+                      <label class="label">
+                        <span class="label-text">Password</span>
+                      </label>
+                      <input id="transaction-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
+                    </div>
+                    <div class="form-control mt-6">
+                      <button id="transaction-btn" disabled class="btn btn-warning">Cash Out</button>
+                    </div>
+                  </form>
+                </div> -->
+                <!-- Transaction section end -->
         </div>
       </div>
     </div>
     <script src="index.js"></script>
     <script src="home.js"></script>
+    <script src="toogle.js"></script>
   </body>
 </html>

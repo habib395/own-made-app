@@ -139,7 +139,7 @@
               </svg>
               <p class="text-base">Bonus</p>
             </button>
-            <button class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
+            <button id="pay-money-btn" class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -156,7 +156,7 @@
               </svg>
               <p class="text-base">Pay Bill</p>
             </button>
-            <button class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
+            <button id="transaction-btn" class="btn-common-class bg-amber-400 btn btn-lg btn-warning">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -239,7 +239,7 @@
                   <input id="transfer-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
                 </div>
                 <div class="form-control mt-6">
-                  <button id="transfer-btn" disabled class="btn btn-warning">Tranafer</button>
+                  <button id="transfer-btn" disabled class="btn btn-warning">Transfer</button>
                 </div>
               </form>
             </div>
@@ -251,7 +251,7 @@
                     <label class="label">
                       <span class="label-text">Enter Bonus Coupon</span>
                     </label>
-                    <input id="bonus-amount" type="text" placeholder="Enter Your Coupon" class="input input-bordered" required />
+                    <input id="bonus-amount" type="number" placeholder="Enter Your Coupon" class="input input-bordered" required />
                   </div>
                   <div class="form-control mt-6">
                     <button id="bonus-btn" disabled class="btn btn-warning">Get Bonus</button>
@@ -260,13 +260,25 @@
               </div>
               <!-- Bonus section end -->
                <!-- pay section start -->
-               <!-- <div id="pay-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+               <div id="pay-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                 <form class="card-body">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">Enter Amount</span>
+                      <span class="label-text">Select To Pay</span>
                     </label>
-                    <input id="pay-amount" type="number" placeholder="Enter Money Amount" class="input input-bordered" required />
+                    <input id="select-amount" type="text" placeholder="Select Back" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Biller Account Number</span>
+                    </label>
+                    <input id="biller-amount" type="number" placeholder="Enter Biller Amount Number" class="input input-bordered" required />
+                  </div>
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">Amount to Pay</span>
+                    </label>
+                    <input id="pay-amount" type="number" placeholder="Enter Amount to Pay" class="input input-bordered" required />
                   </div>
                   <div class="form-control">
                     <label class="label">
@@ -275,13 +287,13 @@
                     <input id="pay-password" type="password" placeholder="password" autocomplete="off" class="input input-bordered" required />
                   </div>
                   <div class="form-control mt-6">
-                    <button id="pay-btn" disabled class="btn btn-warning">Cash Out</button>
+                    <button id="pay-btn" disabled class="btn btn-warning">Pay Now</button>
                   </div>
                 </form>
-              </div> -->
+              </div>
                <!-- pay section end -->
                 <!-- Transaction section start -->
-                <!-- <div id="transaction-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+                <div id="transaction-section" class="hidden card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                   <form class="card-body">
                     <div class="form-control">
                       <label class="label">
@@ -299,7 +311,7 @@
                       <button id="transaction-btn" disabled class="btn btn-warning">Cash Out</button>
                     </div>
                   </form>
-                </div> -->
+                </div> 
                 <!-- Transaction section end -->
         </div>
       </div>

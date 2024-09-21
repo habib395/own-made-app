@@ -11,6 +11,8 @@ addMoneyBtn.addEventListener('click', function(event){
     transferSection.classList.add('hidden')
     const bonusSection = document.getElementById('bonus-section')
     bonusSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
 })
 
 document.getElementById('cash-in-btn').addEventListener('click', function(event){
@@ -47,6 +49,8 @@ document.getElementById('cash-out-money-btn').addEventListener('click', function
     transferSection.classList.add('hidden')
     const bonusSection = document.getElementById('bonus-section')
     bonusSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
 })
 document.getElementById('cash-out-btn').addEventListener('click', function(event){
     event.preventDefault()
@@ -77,6 +81,8 @@ document.getElementById('transfer-money-btn').addEventListener('click', function
     cashInSection.classList.add('hidden')
     const bonusSection = document.getElementById('bonus-section')
     bonusSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
 })
 document.getElementById('transfer-btn').addEventListener('click', function(event){
     event.preventDefault()
@@ -110,13 +116,55 @@ document.getElementById('bonus-money-btn').addEventListener("click", function(ev
     cashInSection.classList.add('hidden')
     const transferSection = document.getElementById('transfer-section')
     transferSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
 })
 document.getElementById('bonus-btn').addEventListener("click", function(event){
     event.preventDefault()
-    document.getElementById('bonus-amount').value = ''
+    const bonusAmount = document.getElementById('bonus-amount').value
+    if(bonusAmount === "123455"){
+        document.getElementById('bonus-amount').value = ''
     const loginTwoButton = document.getElementById('bonus-btn')
         loginTwoButton.setAttribute('disabled', true)
+    }else{
+        alert('Give the Currect Coupon')
+    }
 })
+document.getElementById('pay-money-btn').addEventListener("click", function(event){
+    event.preventDefault()
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.remove('hidden')
+    const payBtn = document.getElementById('pay-btn')
+    payBtn.removeAttribute('disabled')
+    const cashOutSection = document.getElementById('out-section')
+    cashOutSection.classList.add('hidden')
+    const cashInSection = document.getElementById('add-section')
+    cashInSection.classList.add('hidden')
+    const transferSection = document.getElementById('transfer-section')
+    transferSection.classList.add('hidden')
+    const bonusSection = document.getElementById('bonus-section')
+    bonusSection.classList.add('hidden')
+})
+document.getElementById('pay-btn').addEventListener('click', function(event){
+    event.preventDefault()
+    const availableMoney = parseFloat(document.getElementById('available-money').innerText)
+    const billerAmount = document.getElementById('biller-amount').value
+    const payAmount = parseFloat(document.getElementById('pay-amount').value)
+    const payPassword = document.getElementById('pay-password').value
+    if(billerAmount.length === 11 && payPassword === '1234' && payAmount > 0 && payAmount < availableMoney){
+        let payMoney = availableMoney - payAmount
+        document.getElementById('available-money').innerText = payMoney
+        document.getElementById('biller-amount').value = ''
+        document.getElementById('pay-password').value = ''
+        document.getElementById('pay-amount').value = ''
+        document.getElementById('select-amount').value = ''
+        const loginTwoButton = document.getElementById('pay-btn')
+        loginTwoButton.setAttribute('disabled', true)
+    }else{
+        alert('Please fill Up With Right Information')
+    }
+})
+
 
 
 

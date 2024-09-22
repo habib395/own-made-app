@@ -1,3 +1,4 @@
+
 const addMoneyBtn = document.getElementById('add-money-btn')
 addMoneyBtn.addEventListener('click', function(event){
     event.preventDefault()
@@ -31,8 +32,8 @@ document.getElementById('cash-in-btn').addEventListener('click', function(event)
         loginButton.setAttribute('disabled', true)
 //add to transaction history
         const p = document.createElement('p')
-        p.classList.add('text-amber-400')
         p.classList.add('text-xs')
+        p.classList.add('font-bold')
         p.innerText = `Cash In
         Added: ${enterAmount} Tk.  New Balance: ${addMoney} Tk.
         Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}`
@@ -77,10 +78,10 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
         const loginButton = document.getElementById('cash-out-btn')
         loginButton.setAttribute('disabled', true)
         //add to transaction history
-        
+
         const div = document.createElement('div')
-        div.innerHTML = `<h4 class="text-2xl font-bold">Cash Out</h4>
-        <p>Tk. ${enterAmount} withdraw. New Balance ${reduceMoney}</p>
+        div.innerHTML = `<p class="text-base font-bold">Cash Out</p>
+        <p class="text-sm font-bold">Tk. ${enterAmount} withdraw. New Balance ${reduceMoney}</p>
          Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}`
         document.getElementById('transaction-container').appendChild(div)
     }else{
@@ -121,6 +122,12 @@ document.getElementById('transfer-btn').addEventListener('click', function(event
         loginButton.removeAttribute('disabled')
         const loginTwoButton = document.getElementById('transfer-btn')
         loginTwoButton.setAttribute('disabled', true)
+        //add transaction section
+        const div = document.createElement('div')
+        div.innerHTML =`<h4 class="text-base font-bold">Transfer Money</h4>
+        <p class='text-sm font-bold'>Tk. ${enterAmount} Transferred. New Balance ${transferMoney} Tk <br>
+        Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}</p>`
+        document.getElementById('transaction-container').appendChild(div)
     }else{
         alert('Please provide Right Information')
     }
@@ -146,9 +153,19 @@ document.getElementById('bonus-btn').addEventListener("click", function(event){
     event.preventDefault()
     const bonusAmount = document.getElementById('bonus-amount').value
     if(bonusAmount === "123455"){
+        const availableMoney = parseFloat(document.getElementById('available-money').innerText)
+        const added = document.getElementById('bonus-amount').value = 200
+        const totalMoney = added + availableMoney;
+        document.getElementById('available-money').innerText = totalMoney
         document.getElementById('bonus-amount').value = ''
-    const loginTwoButton = document.getElementById('bonus-btn')
+        const loginTwoButton = document.getElementById('bonus-btn')
         loginTwoButton.setAttribute('disabled', true)
+        //add transaction section
+        const div = document.createElement('div')
+        div.innerHTML =`<h4 class="text-sm font-bold">Bonus Money</h4>
+        <p class='text-xs font-bold'>Get Bonus Tk. ${added} Added. New Balance ${totalMoney} Tk <br>
+        Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}</p>`
+        document.getElementById('transaction-container').appendChild(div)
     }else{
         alert('Give the Currect Coupon')
     }
@@ -185,16 +202,33 @@ document.getElementById('pay-btn').addEventListener('click', function(event){
         document.getElementById('select-amount').value = ''
         const loginTwoButton = document.getElementById('pay-btn')
         loginTwoButton.setAttribute('disabled', true)
+         //add transaction section
+         const div = document.createElement('div')
+         div.innerHTML =`<h4 class="text-sm font-bold">Pay Bill</h4>
+         <p class='text-xs font-bold'>Pay Bill Tk. ${payAmount}. New Balance ${payMoney} Tk <br>
+         Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}</p>`
+         document.getElementById('transaction-container').appendChild(div)
     }else{
         alert('Please fill Up With Right Information')
     }
 })
-
-
-
-
-
-
+document.getElementById('transaction-btn').addEventListener('click', function(event){
+    event.preventDefault()
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.remove('hidden')
+    const transactionBtn = document.getElementById('transaction-btn')
+    transactionBtn.removeAttribute('disabled')
+    const cashOutSection = document.getElementById('out-section')
+    cashOutSection.classList.add('hidden')
+    const cashInSection = document.getElementById('add-section')
+    cashInSection.classList.add('hidden')
+    const transferSection = document.getElementById('transfer-section')
+    transferSection.classList.add('hidden')
+    const bonusSection = document.getElementById('bonus-section')
+    bonusSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
+})
 
 
 

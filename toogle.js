@@ -1,4 +1,18 @@
 document.getElementById('transaction-btn').addEventListener('click', function(event){
     event.preventDefault()
-    
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.remove('hidden')
+    const transactionBtn = document.getElementById('transaction-btn')
+    transactionBtn.removeAttribute('disabled')
+    const cashOutSection = document.getElementById('out-section')
+    cashOutSection.classList.add('hidden')
+    const cashInSection = document.getElementById('add-section')
+    cashInSection.classList.add('hidden')
+    const transferSection = document.getElementById('transfer-section')
+    transferSection.classList.add('hidden')
+    const bonusSection = document.getElementById('bonus-section')
+    bonusSection.classList.add('hidden')
+    const paySection = document.getElementById('pay-section')
+    paySection.classList.add('hidden')
 })
+

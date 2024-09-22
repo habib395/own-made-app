@@ -13,6 +13,8 @@ addMoneyBtn.addEventListener('click', function(event){
     bonusSection.classList.add('hidden')
     const paySection = document.getElementById('pay-section')
     paySection.classList.add('hidden')
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.add('hidden')
 })
 
 document.getElementById('cash-in-btn').addEventListener('click', function(event){
@@ -27,6 +29,14 @@ document.getElementById('cash-in-btn').addEventListener('click', function(event)
         document.getElementById('input-password').value = ''
         const loginButton = document.getElementById('cash-in-btn')
         loginButton.setAttribute('disabled', true)
+//add to transaction history
+        const p = document.createElement('p')
+        p.classList.add('text-amber-400')
+        p.classList.add('text-xs')
+        p.innerText = `Cash In
+        Added: ${enterAmount} Tk.  New Balance: ${addMoney} Tk.
+        Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}`
+        document.getElementById('transaction-container').appendChild(p)
     }else{
         alert('Please provide Right Information')
     }
@@ -51,6 +61,8 @@ document.getElementById('cash-out-money-btn').addEventListener('click', function
     bonusSection.classList.add('hidden')
     const paySection = document.getElementById('pay-section')
     paySection.classList.add('hidden')
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.add('hidden')
 })
 document.getElementById('cash-out-btn').addEventListener('click', function(event){
     event.preventDefault()
@@ -64,6 +76,13 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
         document.getElementById('cas-out-password').value = ''
         const loginButton = document.getElementById('cash-out-btn')
         loginButton.setAttribute('disabled', true)
+        //add to transaction history
+        
+        const div = document.createElement('div')
+        div.innerHTML = `<h4 class="text-2xl font-bold">Cash Out</h4>
+        <p>Tk. ${enterAmount} withdraw. New Balance ${reduceMoney}</p>
+         Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}`
+        document.getElementById('transaction-container').appendChild(div)
     }else{
         alert('Please provide Right Information')
     }
@@ -83,6 +102,8 @@ document.getElementById('transfer-money-btn').addEventListener('click', function
     bonusSection.classList.add('hidden')
     const paySection = document.getElementById('pay-section')
     paySection.classList.add('hidden')
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.add('hidden')
 })
 document.getElementById('transfer-btn').addEventListener('click', function(event){
     event.preventDefault()
@@ -118,6 +139,8 @@ document.getElementById('bonus-money-btn').addEventListener("click", function(ev
     transferSection.classList.add('hidden')
     const paySection = document.getElementById('pay-section')
     paySection.classList.add('hidden')
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.add('hidden')
 })
 document.getElementById('bonus-btn').addEventListener("click", function(event){
     event.preventDefault()
@@ -144,6 +167,8 @@ document.getElementById('pay-money-btn').addEventListener("click", function(even
     transferSection.classList.add('hidden')
     const bonusSection = document.getElementById('bonus-section')
     bonusSection.classList.add('hidden')
+    const transactionSection = document.getElementById('transaction-section')
+    transactionSection.classList.add('hidden')
 })
 document.getElementById('pay-btn').addEventListener('click', function(event){
     event.preventDefault()

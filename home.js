@@ -2,27 +2,35 @@
 const addMoneyBtn = document.getElementById('add-money-btn')
 addMoneyBtn.addEventListener('click', function(event){
     event.preventDefault()
-    const addSection = document.getElementById('add-section')
+    const addSection = getDocumentElementIdOnly('add-section')
     addSection.classList.remove('hidden')
-    const loginButton = document.getElementById('cash-in-btn')
+    const loginButton = getDocumentElementIdOnly('cash-in-btn')
     loginButton.removeAttribute('disabled')
-    const outSection = document.getElementById('out-section')
+    const outSection = getDocumentElementIdOnly('out-section')
     outSection.classList.add('hidden')
-    const transferSection = document.getElementById('transfer-section')
+    const transferSection = getDocumentElementIdOnly('transfer-section')
     transferSection.classList.add('hidden')
-    const bonusSection = document.getElementById('bonus-section')
+    const bonusSection = getDocumentElementIdOnly('bonus-section')
     bonusSection.classList.add('hidden')
-    const paySection = document.getElementById('pay-section')
+    const paySection = getDocumentElementIdOnly('pay-section')
     paySection.classList.add('hidden')
-    const transactionSection = document.getElementById('transaction-section')
+    const transactionSection = getDocumentElementIdOnly('transaction-section')
     transactionSection.classList.add('hidden')
+
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[0].classList.add('btn-warning')
+    buttonDtn[1].setAttribute('disabled', true)
+    buttonDtn[2].setAttribute('disabled', true)
+    buttonDtn[3].setAttribute('disabled', true)
+    buttonDtn[4].setAttribute('disabled', true)
+    buttonDtn[5].setAttribute('disabled', true)
 })
 
 document.getElementById('cash-in-btn').addEventListener('click', function(event){
     event.preventDefault()
-    const availableMoney = parseFloat(document.getElementById('available-money').innerText)
-    const enterAmount = parseFloat(document.getElementById('enter-amount').value)
-    const InputPassword = document.getElementById('input-password').value
+    const availableMoney = getAvailableMoneyProvidingId('available-money')
+    const enterAmount = getInputValueByProvidingId("enter-amount")
+    const InputPassword = getInputPasswordByProvidingId('input-password')
     if(InputPassword === '1234' && enterAmount > 0){
         let addMoney = availableMoney + enterAmount
         document.getElementById('available-money').innerText = addMoney
@@ -41,7 +49,13 @@ document.getElementById('cash-in-btn').addEventListener('click', function(event)
     }else{
         alert('Please provide Right Information')
     }
-    
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[0].classList.remove('btn-warning')
+    buttonDtn[1].removeAttribute('disabled')
+    buttonDtn[2].removeAttribute('disabled')
+    buttonDtn[3].removeAttribute('disabled')
+    buttonDtn[4].removeAttribute('disabled')
+    buttonDtn[5].removeAttribute('disabled')
 })
 
 const logOutButton = document.getElementById('log-out-button')
@@ -64,12 +78,19 @@ document.getElementById('cash-out-money-btn').addEventListener('click', function
     paySection.classList.add('hidden')
     const transactionSection = document.getElementById('transaction-section')
     transactionSection.classList.add('hidden')
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[1].classList.add('btn-warning')
+    buttonDtn[0].setAttribute('disabled', true)
+    buttonDtn[2].setAttribute('disabled', true)
+    buttonDtn[3].setAttribute('disabled', true)
+    buttonDtn[4].setAttribute('disabled', true)
+    buttonDtn[5].setAttribute('disabled', true)
 })
 document.getElementById('cash-out-btn').addEventListener('click', function(event){
     event.preventDefault()
-    const availableMoney = parseFloat(document.getElementById('available-money').innerText)
-    const enterAmount = parseFloat(document.getElementById('cash-out-amount').value)
-    const InputPassword = document.getElementById('cas-out-password').value
+    const availableMoney = getAvailableMoneyProvidingId('available-money')
+    const enterAmount = getInputValueByProvidingId("cash-out-amount")
+    const InputPassword = getInputPasswordByProvidingId('cas-out-password')
     if(InputPassword === '1234' && enterAmount > 0 && enterAmount < availableMoney){
         let reduceMoney = availableMoney - enterAmount
         document.getElementById('available-money').innerText = reduceMoney
@@ -87,6 +108,13 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
     }else{
         alert('Please provide Right Information')
     }
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[1].classList.remove('btn-warning')
+    buttonDtn[0].removeAttribute('disabled')
+    buttonDtn[2].removeAttribute('disabled')
+    buttonDtn[3].removeAttribute('disabled')
+    buttonDtn[4].removeAttribute('disabled')
+    buttonDtn[5].removeAttribute('disabled')
 })
 
 document.getElementById('transfer-money-btn').addEventListener('click', function(event){
@@ -105,13 +133,20 @@ document.getElementById('transfer-money-btn').addEventListener('click', function
     paySection.classList.add('hidden')
     const transactionSection = document.getElementById('transaction-section')
     transactionSection.classList.add('hidden')
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[2].classList.add('btn-warning')
+    buttonDtn[0].setAttribute('disabled', true)
+    buttonDtn[1].setAttribute('disabled', true)
+    buttonDtn[3].setAttribute('disabled', true)
+    buttonDtn[4].setAttribute('disabled', true)
+    buttonDtn[5].setAttribute('disabled', true)
 })
 document.getElementById('transfer-btn').addEventListener('click', function(event){
     event.preventDefault()
     const phoneNumber = document.getElementById('transfer-other-amount').value
-    const availableMoney = parseFloat(document.getElementById('available-money').innerText)
-    const enterAmount = parseFloat(document.getElementById('transfer-amount').value)
-    const InputPassword = document.getElementById('transfer-password').value
+    const availableMoney = getAvailableMoneyProvidingId('available-money')
+    const enterAmount = getInputValueByProvidingId("transfer-amount")
+    const InputPassword = getInputPasswordByProvidingId('transfer-password')
     if(InputPassword === '1234' && enterAmount > 0 && enterAmount < availableMoney && phoneNumber.length === 11){
         let transferMoney = availableMoney - enterAmount
         document.getElementById('available-money').innerText = transferMoney
@@ -131,6 +166,13 @@ document.getElementById('transfer-btn').addEventListener('click', function(event
     }else{
         alert('Please provide Right Information')
     }
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[2].classList.remove('btn-warning')
+    buttonDtn[0].removeAttribute('disabled')
+    buttonDtn[1].removeAttribute('disabled')
+    buttonDtn[3].removeAttribute('disabled')
+    buttonDtn[4].removeAttribute('disabled')
+    buttonDtn[5].removeAttribute('disabled')
 })
 document.getElementById('bonus-money-btn').addEventListener("click", function(event){
     event.preventDefault()
@@ -148,12 +190,20 @@ document.getElementById('bonus-money-btn').addEventListener("click", function(ev
     paySection.classList.add('hidden')
     const transactionSection = document.getElementById('transaction-section')
     transactionSection.classList.add('hidden')
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[3].classList.add('btn-warning')
+    buttonDtn[0].setAttribute('disabled', true)
+    buttonDtn[1].setAttribute('disabled', true)
+    buttonDtn[2].setAttribute('disabled', true)
+    buttonDtn[4].setAttribute('disabled', true)
+    buttonDtn[5].setAttribute('disabled', true)
+    
 })
 document.getElementById('bonus-btn').addEventListener("click", function(event){
     event.preventDefault()
     const bonusAmount = document.getElementById('bonus-amount').value
     if(bonusAmount === "123455"){
-        const availableMoney = parseFloat(document.getElementById('available-money').innerText)
+        const availableMoney = getAvailableMoneyProvidingId('available-money')
         const added = document.getElementById('bonus-amount').value = 200
         const totalMoney = added + availableMoney;
         document.getElementById('available-money').innerText = totalMoney
@@ -169,6 +219,13 @@ document.getElementById('bonus-btn').addEventListener("click", function(event){
     }else{
         alert('Give the Currect Coupon')
     }
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[3].classList.remove('btn-warning')
+    buttonDtn[0].removeAttribute('disabled')
+    buttonDtn[1].removeAttribute('disabled')
+    buttonDtn[2].removeAttribute('disabled')
+    buttonDtn[4].removeAttribute('disabled')
+    buttonDtn[5].removeAttribute('disabled')
 })
 document.getElementById('pay-money-btn').addEventListener("click", function(event){
     event.preventDefault()
@@ -186,13 +243,21 @@ document.getElementById('pay-money-btn').addEventListener("click", function(even
     bonusSection.classList.add('hidden')
     const transactionSection = document.getElementById('transaction-section')
     transactionSection.classList.add('hidden')
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[4].classList.add('btn-warning')
+    buttonDtn[0].setAttribute('disabled', true)
+    buttonDtn[1].setAttribute('disabled', true)
+    buttonDtn[2].setAttribute('disabled', true)
+    buttonDtn[3].setAttribute('disabled', true)
+    buttonDtn[5].setAttribute('disabled', true)
 })
 document.getElementById('pay-btn').addEventListener('click', function(event){
     event.preventDefault()
-    const availableMoney = parseFloat(document.getElementById('available-money').innerText)
-    const billerAmount = document.getElementById('biller-amount').value
-    const payAmount = parseFloat(document.getElementById('pay-amount').value)
-    const payPassword = document.getElementById('pay-password').value
+    const availableMoney = getAvailableMoneyProvidingId('available-money')
+    const payAmount = getInputValueByProvidingId("pay-amount")
+    const payPassword = getInputPasswordByProvidingId('pay-password')
+    const billerAmount = getInputPasswordByProvidingId('biller-amount')
+    console.log(billerAmount)
     if(billerAmount.length === 11 && payPassword === '1234' && payAmount > 0 && payAmount < availableMoney){
         let payMoney = availableMoney - payAmount
         document.getElementById('available-money').innerText = payMoney
@@ -211,6 +276,13 @@ document.getElementById('pay-btn').addEventListener('click', function(event){
     }else{
         alert('Please fill Up With Right Information')
     }
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[4].classList.remove('btn-warning')
+    buttonDtn[0].removeAttribute('disabled')
+    buttonDtn[1].removeAttribute('disabled')
+    buttonDtn[2].removeAttribute('disabled')
+    buttonDtn[3].removeAttribute('disabled')
+    buttonDtn[5].removeAttribute('disabled')
 })
 document.getElementById('transaction-btn').addEventListener('click', function(event){
     event.preventDefault()
@@ -228,6 +300,8 @@ document.getElementById('transaction-btn').addEventListener('click', function(ev
     bonusSection.classList.add('hidden')
     const paySection = document.getElementById('pay-section')
     paySection.classList.add('hidden')
+    const buttonDtn = document.getElementsByClassName('button-dtn')
+    buttonDtn[5].classList.add('btn-warning')
 })
 
 

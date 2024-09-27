@@ -4,7 +4,6 @@ document.getElementById('phone-number').addEventListener('keyup', function(){
     if(phoneNumber.length === 11){
         loginButton.removeAttribute('disabled')
     }else{
-        // is this create any problem in future?
     }
 })
     const loginButton = document.getElementById('login-button')
@@ -19,3 +18,5 @@ document.getElementById('phone-number').addEventListener('keyup', function(){
         alert("Invalid Phone Number or Password")
     }
 })
+
+

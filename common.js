@@ -11,3 +11,11 @@ function getInputPasswordByProvidingId(id){
 function getDocumentElementIdOnly(id){
     return document.getElementById(id)
 }
+
+function disabledSection(id){
+    const buttonDtn = document.getElementsByClassName(id)
+    for( i = 0 ; i < buttonDtn.length ; i++){
+        const buttonBtn = buttonDtn[i]
+        buttonBtn.removeAttribute('disabled') 
+    }
+}

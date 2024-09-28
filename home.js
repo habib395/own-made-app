@@ -1,4 +1,3 @@
-
 const addMoneyBtn = document.getElementById('add-money-btn')
 addMoneyBtn.addEventListener('click', function(event){
     event.preventDefault()
@@ -6,10 +5,8 @@ addMoneyBtn.addEventListener('click', function(event){
     showSectionById('add-section')
     selectButtonDisabled('button-dtn')
     const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[0].classList.add('btn-warning')
     buttonDtn[0].removeAttribute('disabled')
 })
-
 document.getElementById('cash-in-btn').addEventListener('click', function(event){
     event.preventDefault()
     const availableMoney = getAvailableMoneyProvidingId('available-money')
@@ -22,7 +19,6 @@ document.getElementById('cash-in-btn').addEventListener('click', function(event)
         document.getElementById('input-password').value = ''
         const loginButton = document.getElementById('cash-in-btn')
         loginButton.setAttribute('disabled', true)
-//add to transaction history
         const p = document.createElement('p')
         p.classList.add('text-xs')
         p.classList.add('font-bold')
@@ -33,15 +29,8 @@ document.getElementById('cash-in-btn').addEventListener('click', function(event)
     }else{
         alert('Please provide Right Information')
     }
-    const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[0].classList.remove('btn-warning')
-    buttonDtn[1].removeAttribute('disabled')
-    buttonDtn[2].removeAttribute('disabled')
-    buttonDtn[3].removeAttribute('disabled')
-    buttonDtn[4].removeAttribute('disabled')
-    buttonDtn[5].removeAttribute('disabled')
+    disabledSection('button-dtn')
 })
-
 const logOutButton = document.getElementById('log-out-button')
 logOutButton.addEventListener('click', function(event){
     event.preventDefault()
@@ -53,7 +42,6 @@ document.getElementById('cash-out-money-btn').addEventListener('click', function
     showSectionById('out-section')
     selectButtonDisabled('button-dtn')
     const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[1].classList.add('btn-warning')
     buttonDtn[1].removeAttribute('disabled')
 })
 document.getElementById('cash-out-btn').addEventListener('click', function(event){
@@ -68,8 +56,6 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
         document.getElementById('cas-out-password').value = ''
         const loginButton = document.getElementById('cash-out-btn')
         loginButton.setAttribute('disabled', true)
-        //add to transaction history
-
         const div = document.createElement('div')
         div.innerHTML = `<p class="text-base font-bold">Cash Out</p>
         <p class="text-sm font-bold">Tk. ${enterAmount} withdraw. New Balance ${reduceMoney}</p>
@@ -78,22 +64,14 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
     }else{
         alert('Please provide Right Information')
     }
-    const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[1].classList.remove('btn-warning')
-    buttonDtn[0].removeAttribute('disabled')
-    buttonDtn[2].removeAttribute('disabled')
-    buttonDtn[3].removeAttribute('disabled')
-    buttonDtn[4].removeAttribute('disabled')
-    buttonDtn[5].removeAttribute('disabled')
+    disabledSection('button-dtn')
 })
-
 document.getElementById('transfer-money-btn').addEventListener('click', function(event){
     event.preventDefault()
     hideDisabledOption('transfer-btn')
     showSectionById('transfer-section')
     selectButtonDisabled('button-dtn')
     const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[2].classList.add('btn-warning')
     buttonDtn[2].removeAttribute('disabled')
 })
 document.getElementById('transfer-btn').addEventListener('click', function(event){
@@ -112,7 +90,6 @@ document.getElementById('transfer-btn').addEventListener('click', function(event
         loginButton.removeAttribute('disabled')
         const loginTwoButton = document.getElementById('transfer-btn')
         loginTwoButton.setAttribute('disabled', true)
-        //add transaction section
         const div = document.createElement('div')
         div.innerHTML =`<h4 class="text-base font-bold">Transfer Money</h4>
         <p class='text-sm font-bold'>Tk. ${enterAmount} Transferred. New Balance ${transferMoney} Tk <br>
@@ -121,13 +98,7 @@ document.getElementById('transfer-btn').addEventListener('click', function(event
     }else{
         alert('Please provide Right Information')
     }
-    const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[2].classList.remove('btn-warning')
-    buttonDtn[0].removeAttribute('disabled')
-    buttonDtn[1].removeAttribute('disabled')
-    buttonDtn[3].removeAttribute('disabled')
-    buttonDtn[4].removeAttribute('disabled')
-    buttonDtn[5].removeAttribute('disabled')
+    disabledSection('button-dtn')
 })
 document.getElementById('bonus-money-btn').addEventListener("click", function(event){
     event.preventDefault()
@@ -135,7 +106,6 @@ document.getElementById('bonus-money-btn').addEventListener("click", function(ev
     showSectionById('bonus-section')
     selectButtonDisabled('button-dtn')
     const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[3].classList.add('btn-warning')
     buttonDtn[3].removeAttribute('disabled')
     
 })
@@ -150,22 +120,15 @@ document.getElementById('bonus-btn').addEventListener("click", function(event){
         document.getElementById('bonus-amount').value = ''
         const loginTwoButton = document.getElementById('bonus-btn')
         loginTwoButton.setAttribute('disabled', true)
-        //add transaction section
         const div = document.createElement('div')
         div.innerHTML =`<h4 class="text-sm font-bold">Bonus Money</h4>
         <p class='text-xs font-bold'>Get Bonus Tk. ${added} Added. New Balance ${totalMoney} Tk <br>
         Time: at ${new Date().toLocaleTimeString()} in ${new Date().toLocaleDateString()}</p>`
         document.getElementById('transaction-container').appendChild(div)
     }else{
-        alert('Give the Currect Coupon')
+        alert('Give the Correct Coupon')
     }
-    const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[3].classList.remove('btn-warning')
-    buttonDtn[0].removeAttribute('disabled')
-    buttonDtn[1].removeAttribute('disabled')
-    buttonDtn[2].removeAttribute('disabled')
-    buttonDtn[4].removeAttribute('disabled')
-    buttonDtn[5].removeAttribute('disabled')
+    disabledSection('button-dtn')
 })
 document.getElementById('pay-money-btn').addEventListener("click", function(event){
     event.preventDefault()
@@ -173,7 +136,6 @@ document.getElementById('pay-money-btn').addEventListener("click", function(even
     showSectionById('pay-section')
     selectButtonDisabled('button-dtn')
     const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[4].classList.add('btn-warning')
     buttonDtn[4].removeAttribute('disabled')
 })
 document.getElementById('pay-btn').addEventListener('click', function(event){
@@ -192,7 +154,6 @@ document.getElementById('pay-btn').addEventListener('click', function(event){
         document.getElementById('select-amount').value = ''
         const loginTwoButton = document.getElementById('pay-btn')
         loginTwoButton.setAttribute('disabled', true)
-         //add transaction section
          const div = document.createElement('div')
          div.innerHTML =`<h4 class="text-sm font-bold">Pay Bill</h4>
          <p class='text-xs font-bold'>Pay Bill Tk. ${payAmount}. New Balance ${payMoney} Tk <br>
@@ -201,13 +162,7 @@ document.getElementById('pay-btn').addEventListener('click', function(event){
     }else{
         alert('Please fill Up With Right Information')
     }
-    const buttonDtn = document.getElementsByClassName('button-dtn')
-    buttonDtn[4].classList.remove('btn-warning')
-    buttonDtn[0].removeAttribute('disabled')
-    buttonDtn[1].removeAttribute('disabled')
-    buttonDtn[2].removeAttribute('disabled')
-    buttonDtn[3].removeAttribute('disabled')
-    buttonDtn[5].removeAttribute('disabled')
+    disabledSection('button-dtn')
 })
 document.getElementById('transaction-btn').addEventListener('click', function(event){
     event.preventDefault()

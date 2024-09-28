@@ -14,6 +14,10 @@ function hideDisabledOption(id){
 
 function selectButtonDisabled(id){
     const buttonDtn = document.getElementsByClassName(id)
+    for(i = 0; i < buttonDtn.length; i++){
+        const colorSection = buttonDtn[i]
+        colorSection.classList.add('btn-warning')
+        }
     buttonDtn[0].setAttribute('disabled', true)
     buttonDtn[1].setAttribute('disabled', true)
     buttonDtn[2].setAttribute('disabled', true)
